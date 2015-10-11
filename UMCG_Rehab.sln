@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMCG_Rehab.CSharp", "UMCG_Rehab.CSharp.csproj", "{51E5F031-E950-1CCE-0268-AE13D299F11C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMCG_Rehab.CSharp.Editor", "UMCG_Rehab.CSharp.Editor.csproj", "{BFC65029-DB7C-7851-E791-401A01486BAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51E5F031-E950-1CCE-0268-AE13D299F11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E5F031-E950-1CCE-0268-AE13D299F11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E5F031-E950-1CCE-0268-AE13D299F11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E5F031-E950-1CCE-0268-AE13D299F11C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC65029-DB7C-7851-E791-401A01486BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC65029-DB7C-7851-E791-401A01486BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC65029-DB7C-7851-E791-401A01486BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC65029-DB7C-7851-E791-401A01486BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
