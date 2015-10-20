@@ -29,12 +29,14 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), Vector3.forward * 100, Color.yellow, 10f);
+        //Debug.Break();
         if (currentCount == 10)
         {
             for (int i = 0; i < indicationMarkers.Length; i++)
             {
-                Debug.Log(Vector3.Distance(transform.position, indicationMarkers[i].transform.position) + " " + i);
-                if (Vector3.Distance(MovementMarker.transform.position, indicationMarkers[i].transform.position) > 0)
+                Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[i].transform.position) + " " + i);
+                if (Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[i].transform.position) < 25)
                 {
                     indicationMarkers[i].GetComponent<Renderer>().material.color = Color.green;
                     currentCount = indicationMarkers[i].GetComponent<IndicationMarker>().CircleCount;
@@ -44,7 +46,9 @@ public class test : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(MovementMarker.transform.position, indicationMarkers[currentCount + 1].transform.position) > 0)
+            Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[currentCount + 1].transform.position)+" + "+ (currentCount+1));
+
+            if (Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[currentCount + 1].transform.position) < 25)
             {
                 indicationMarkers[currentCount + 1].GetComponent<Renderer>().material.color = Color.green;
                 currentCount = indicationMarkers[currentCount + 1].GetComponent<IndicationMarker>().CircleCount;
@@ -63,7 +67,7 @@ public class test : MonoBehaviour
         tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x - (PlusOffset * transform.localScale.x*100), transform.position.y + HeightOffset, transform.position.z), Quaternion.identity) as GameObject;
         tempMarker.transform.localScale = transform.localScale*100 / scaleModifier;
         tempMarker.transform.parent = transform;
-        tempMarker.GetComponent<Renderer>().material.color = Color.yellow;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 0;
         indicationMarkers[0] = tempMarker;
 
@@ -74,42 +78,42 @@ public class test : MonoBehaviour
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 4;
         indicationMarkers[4] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x, transform.position.y + HeightOffset, transform.position.z - (PlusOffset * transform.localScale.x)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x, transform.position.y + HeightOffset, transform.position.z - (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
         tempMarker.transform.localScale = transform.localScale * 100 / scaleModifier;
         tempMarker.transform.parent = transform;
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 6;
         indicationMarkers[6] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x, transform.position.y + HeightOffset, transform.position.z + (PlusOffset * transform.localScale.x)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x, transform.position.y + HeightOffset, transform.position.z + (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
         tempMarker.transform.localScale = transform.localScale * 100 / scaleModifier;
         tempMarker.transform.parent = transform;
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 2;
         indicationMarkers[2] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x - (MultiplacationOffset * transform.localScale.x), transform.position.y + HeightOffset, transform.position.z + (MultiplacationOffset * transform.localScale.x)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x - (MultiplacationOffset * transform.localScale.x*100), transform.position.y + HeightOffset, transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
         tempMarker.transform.localScale = transform.localScale * 100 / scaleModifier;
         tempMarker.transform.parent = transform;
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 1;
         indicationMarkers[1] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x - (MultiplacationOffset * transform.localScale.x), transform.position.y + HeightOffset, transform.position.z - (MultiplacationOffset * transform.localScale.x)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x - (MultiplacationOffset * transform.localScale.x*100), transform.position.y + HeightOffset, transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
         tempMarker.transform.localScale = transform.localScale * 100 / scaleModifier;
         tempMarker.transform.parent = transform;
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 7;
         indicationMarkers[7] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x + (MultiplacationOffset * transform.localScale.x), transform.position.y + HeightOffset, transform.position.z + (MultiplacationOffset * transform.localScale.x)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x + (MultiplacationOffset * transform.localScale.x*100), transform.position.y + HeightOffset, transform.position.z + (MultiplacationOffset * transform.localScale.x*100)), Quaternion.identity) as GameObject;
         tempMarker.transform.localScale = transform.localScale * 100 / scaleModifier;
         tempMarker.transform.parent = transform;
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 3;
         indicationMarkers[3] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x + (MultiplacationOffset * transform.localScale.x), transform.position.y + HeightOffset, transform.position.z - (MultiplacationOffset * transform.localScale.x)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(transform.position.x + (MultiplacationOffset * transform.localScale.x*100), transform.position.y + HeightOffset, transform.position.z - (MultiplacationOffset * transform.localScale.x*100)), Quaternion.identity) as GameObject;
         tempMarker.transform.localScale = transform.localScale * 100 / scaleModifier;
         tempMarker.transform.parent = transform;
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;

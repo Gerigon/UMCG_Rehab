@@ -35,7 +35,7 @@ public class Cube_Script : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision Triggered");
+        //Debug.Log("Collision Triggered");
         if (transform.name == "Cube")
         {
             transform.parent = collision.transform.parent;
