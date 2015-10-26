@@ -29,13 +29,13 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), Vector3.forward * 100, Color.yellow, 10f);
+        //Debug.DrawRay(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), Vector3.forward * 100, Color.yellow, 10f);
         //Debug.Break();
         if (currentCount == 10)
         {
             for (int i = 0; i < indicationMarkers.Length; i++)
             {
-                Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[i].transform.position) + " " + i);
+                //Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[i].transform.position) + " " + i);
                 if (Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[i].transform.position) < 25)
                 {
                     indicationMarkers[i].GetComponent<Renderer>().material.color = Color.green;
@@ -46,7 +46,7 @@ public class test : MonoBehaviour
         }
         else
         {
-            Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[currentCount + 1].transform.position)+" + "+ (currentCount+1));
+            //Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[currentCount + 1].transform.position)+" + "+ (currentCount+1));
 
             if (Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[currentCount + 1].transform.position) < 25)
             {
