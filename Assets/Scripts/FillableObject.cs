@@ -19,9 +19,5 @@ public class FillableObject : MonoBehaviour {
         if (scalableLiquid.transform.localScale.z < 18)
         scalableLiquid.transform.localScale += new Vector3(0, 0, 0.05f);
 
-        for (int i = 0; i < length; i++)
-        {
-
-        }
     }
 }
