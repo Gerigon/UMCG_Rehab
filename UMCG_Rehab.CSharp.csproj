@@ -78,7 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cube_Script.cs" />
+    <Compile Include="Assets\Scripts\EggBreaker.cs" />
     <Compile Include="Assets\Scripts\FillableObject.cs" />
+    <Compile Include="Assets\Scripts\FlourPouring.cs" />
     <Compile Include="Assets\Scripts\IndicationMarker.cs" />
     <Compile Include="Assets\Scripts\Mixing.cs" />
     <Compile Include="Assets\Scripts\MotionDetection.cs" />
