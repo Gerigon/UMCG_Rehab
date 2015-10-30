@@ -31,6 +31,11 @@ public class test : MonoBehaviour
     {
         //Debug.DrawRay(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), Vector3.forward * 100, Color.yellow, 10f);
         //Debug.Break();
+        CheckProgress();
+    }
+
+    private void CheckProgress()
+    {
         if (currentCount == 10)
         {
             for (int i = 0; i < indicationMarkers.Length; i++)

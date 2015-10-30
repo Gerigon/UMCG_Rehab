@@ -7,6 +7,7 @@ public class FillableObject : MonoBehaviour {
     public float maxWidth;
     public GameObject scalableLiquid;
     public AnimationCurve curve;
+    public float progress;
 
     private Vector3 startScale;
     private Vector3 startVector;
@@ -21,12 +22,12 @@ public class FillableObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        curve.Evaluate(0.4f);
+        curve.Evaluate(fillProgress);
+        progress = curve.Evaluate(fillProgress);
 	}
 
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Filling");
         fillProgress += 0.001f;
         //Debug.Log(startScale.localPosition.z);
         //if (scalableLiquid.transform.localScale.z < maxFilled)\

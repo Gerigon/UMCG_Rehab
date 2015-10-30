@@ -17,7 +17,6 @@ public class FlourPouring : MonoBehaviour {
     {
         if (transform.eulerAngles.x > 300)
         {
-            Debug.Log("emitting");
             FlourParticleEmitter.enableEmission = true;
         }
     }

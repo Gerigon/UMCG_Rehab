@@ -77,13 +77,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MotionDetection.cs" />
     <Compile Include="Assets\Scripts\Cube_Script.cs" />
     <Compile Include="Assets\Scripts\EggBreaker.cs" />
     <Compile Include="Assets\Scripts\FillableObject.cs" />
     <Compile Include="Assets\Scripts\FlourPouring.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\IndicationMarker.cs" />
     <Compile Include="Assets\Scripts\Mixing.cs" />
-    <Compile Include="Assets\Scripts\MotionDetection.cs" />
     <Compile Include="Assets\Scripts\test.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />

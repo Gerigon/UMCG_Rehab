@@ -41,7 +41,7 @@ public class EggBreaker : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
 
-        if(other.gameObject.tag == "CollidesWithEgg") {
+        if(other.gameObject.tag == "CollideWithEgg") {
             if (speed > 10) {
                 breakEgg();
             }
@@ -49,7 +49,10 @@ public class EggBreaker : MonoBehaviour {
     }
 
     void breakEgg() {
-        brokenEgg.SetActive(true);
+        //brokenEgg.SetActive(true);
+        GameObject temp;
+        temp = Instantiate(brokenEgg, transform.position, Quaternion.identity) as GameObject;
+        temp.transform.parent = transform.parent;
         gameObject.SetActive(false);
     }
 }
