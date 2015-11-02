@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             temp.transform.parent = Chips.transform;
             temp = null;
         }
-        if (Tarmac.transform.GetChild(0).GetComponent<FillableObject>().progress > 0.95f && currentStep == 2)
+        if (Tarmac.transform.GetChild(0).GetComponent<FillableObject>().progress >= 1f && currentStep == 2)
         {
             GameObject temp;
             currentStep = 3;
@@ -77,6 +77,10 @@ public class GameManager : MonoBehaviour
             CheckProgress();
             if (circleCount == 3)
             {
+                for (int i = 0; i < indicationMarkers.Length; i++)
+                {
+                    Destroy(indicationMarkers[i].gameObject);
+                }
                 currentStep = 4;
             }
         }
@@ -103,64 +107,64 @@ public class GameManager : MonoBehaviour
     private void IniateObjects(GameObject kom)
     {
         Debug.Log("objects spawned");
-            GameObject tempMarker;
+        GameObject tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier;
-            tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 0;
-            indicationMarkers[0] = tempMarker;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 0;
+        indicationMarkers[0] = tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 4;
-            indicationMarkers[4] = tempMarker;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 4;
+        indicationMarkers[4] = tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z - (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 6;
-            indicationMarkers[6] = tempMarker;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z - (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 6;
+        indicationMarkers[6] = tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z + (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier; ;
-            tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 2;
-            indicationMarkers[2] = tempMarker;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z + (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier; ;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 2;
+        indicationMarkers[2] = tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 1;
-            indicationMarkers[1] = tempMarker;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 1;
+        indicationMarkers[1] = tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 7;
-            indicationMarkers[7] = tempMarker;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 7;
+        indicationMarkers[7] = tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 3;
-            indicationMarkers[3] = tempMarker;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 3;
+        indicationMarkers[3] = tempMarker;
 
-            tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
-            tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = transform;
-            tempMarker.GetComponent<Renderer>().material.color = Color.blue;
-            tempMarker.GetComponent<IndicationMarker>().CircleCount = 5;
-            indicationMarkers[5] = tempMarker;
-            tempMarker = null;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker.transform.localScale = Vector3.one * scaleModifier;
+        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.GetComponent<Renderer>().material.color = Color.blue;
+        tempMarker.GetComponent<IndicationMarker>().CircleCount = 5;
+        indicationMarkers[5] = tempMarker;
+        tempMarker = null;
     }
     private void CheckProgress()
     {
