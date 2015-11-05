@@ -55,6 +55,7 @@ namespace Vuforia
             }
             else
             {
+                //if(gameObject.name != "ImageTarget (2)")
                 OnTrackingLost();
             }
         }

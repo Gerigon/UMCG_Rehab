@@ -19,6 +19,9 @@ public class FollowTarget : MonoBehaviour {
         {
             transform.position = gripper.transform.position + gripper.transform.localToWorldMatrix.MultiplyVector(Vector3.up) + offSet;
             transform.rotation = gripper.transform.rotation;
+            if(gameObject.name == "Staafmixer(Clone)") {
+                transform.Rotate(270, 90, 90);
+            }
         }
 	}
 }

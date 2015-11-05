@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
-  <Tracking>
-    <ImageTarget name="stones" size="320.000000 224.000000" />
-    <ImageTarget name="chips" size="320.000000 224.000000" />
-    <ImageTarget name="tarmac" size="320.000000 224.000000" />
-    <ImageTarget name="ARTESTIMAGE" size="320.000000 320.000000" />
-  </Tracking>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="gripper1" size="100.000000 100.000000"/>
+        <ImageTarget name="stones" size="320.000000 224.000000"/>
+        <ImageTarget name="chips" size="320.000000 224.000000"/>
+        <ImageTarget name="tarmac" size="320.000000 224.000000"/>
+        <ImageTarget name="ARTESTIMAGE" size="320.000000 320.000000"/>
+        <ImageTarget name="GripperTarget.Front" size="100.000000 100.000000"/>
+        <ImageTarget name="GripperTarget.Bottom" size="100.000000 100.000000"/>
+        <ImageTarget name="GripperTarget.Back" size="100.000000 100.000000"/>
+        <ImageTarget name="GripperTarget.Right" size="100.000000 100.000000"/>
+        <ImageTarget name="GripperTarget.Left" size="100.000000 100.000000"/>
+        <ImageTarget name="GripperTarget.Top" size="100.000000 100.000000"/>
+        <MultiTarget name="GripperTarget">
+            <Part name="GripperTarget.Left" translation="-50.0 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="GripperTarget.Right" translation="50.0 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="GripperTarget.Front" translation="0 0 50.0" rotation="AD: 1 0 0 0"/>
+            <Part name="GripperTarget.Back" translation="0 0 -50.0" rotation="AD: 0 1 0 180"/>
+            <Part name="GripperTarget.Top" translation="0 50.0 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="GripperTarget.Bottom" translation="0 -50.0 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
 </QCARConfig>

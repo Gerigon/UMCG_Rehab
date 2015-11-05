@@ -42,5 +42,7 @@ public class BoterDropper : MonoBehaviour {
             transform.GetChild(0).transform.GetComponent<Renderer>().material.color = new Color(transform.GetChild(0).transform.GetComponent<Renderer>().material.color.r, transform.GetChild(0).transform.GetComponent<Renderer>().material.color.g, transform.GetChild(0).transform.GetComponent<Renderer>().material.color.b, 1 - (i / 179f));
             yield return new WaitForEndOfFrame();
         }
+
+        Destroy(this.gameObject);
     }
 }

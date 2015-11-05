@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
             Interface.GetComponent<Text>().text = "Pak de melk en giet het in de kom";
             
             Destroy(Chips.transform.GetChild(0).gameObject);
+            Chips.GetComponent<Vuforia.ImageTargetBehaviour>().enabled = true;
             temp = Instantiate(Melk, Chips.transform.position + new Vector3(0, 75, 0), Quaternion.AngleAxis(90, Vector3.left)) as GameObject;
             temp.transform.parent = Chips.transform;
             Debug.Log(Chips.transform.GetChild(0).gameObject);
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject temp;
             Destroy(Chips.transform.GetChild(0).gameObject);
+            Chips.GetComponent<Vuforia.ImageTargetBehaviour>().enabled = true;
             temp = Instantiate(Mixer, Chips.transform.position + new Vector3(0, 15, -10), Quaternion.AngleAxis(90, Vector3.left)) as GameObject;
             //temp.transform.localScale = new Vector3(2, 2, 2);
             temp.transform.parent = Chips.transform;
@@ -142,7 +144,7 @@ public class GameManager : MonoBehaviour
             iniated = false;
             GameObject temp;
             Destroy(Chips.transform.GetChild(0).gameObject);
-            temp = Instantiate(Mixer, Chips.transform.position + new Vector3(0, 15, -10), Quaternion.AngleAxis(90, Vector3.left)) as GameObject;
+            temp = Instantiate(Mixer, Chips.transform.position + new Vector3(0, 200, -10), Quaternion.AngleAxis(90, Vector3.up)) as GameObject;
             temp.transform.parent = Chips.transform;
             MovementMarker = temp;
             IniateObjects(Tarmac.transform.GetChild(0).gameObject);
@@ -249,6 +251,7 @@ public class GameManager : MonoBehaviour
                 temp = Instantiate(Bord, Tarmac.transform.position + new Vector3(0, 10, 0), Quaternion.AngleAxis(90, Vector3.left)) as GameObject;
                 temp.transform.parent = Tarmac.transform;
                 iniated = true;
+                Interface.GetComponent<Text>().text = "Doe de pannenkoek op het bord.";
             }
             if (!lerping)
             {
@@ -282,6 +285,7 @@ public class GameManager : MonoBehaviour
         if (Vector3.Distance(currentGripper.transform.position + currentGripper.transform.localToWorldMatrix.MultiplyVector(Vector3.up), objectToStick.transform.position) < 30)
         {
             objectToStick.GetComponent<FollowTarget>().following = true;
+            //Chips.GetComponent<Vuforia.DefaultTrackableEventHandler>().enabled = false;
         }
     }
     IEnumerator FlipPannenkoek()
@@ -318,62 +322,75 @@ public class GameManager : MonoBehaviour
         Debug.Log("objects spawned");
         GameObject tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3(-(PlusOffset * transform.localScale.x * 100), HeightOffset, 0);
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 0;
         indicationMarkers[0] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (PlusOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3(PlusOffset * transform.localScale.x * 100, HeightOffset, 0);
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 4;
         indicationMarkers[4] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z - (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z - (PlusOffset * transform.localScale.x * 100)), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3(0, HeightOffset, -(PlusOffset * transform.localScale.x * 100));
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 6;
         indicationMarkers[6] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z + (PlusOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x, kom.transform.position.y + HeightOffset, kom.transform.position.z + (PlusOffset * transform.localScale.x * 100)), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier; ;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3(0, HeightOffset, PlusOffset * transform.localScale.x * 100);
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 2;
         indicationMarkers[2] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3(-(MultiplacationOffset * transform.localScale.x * 100), HeightOffset, (MultiplacationOffset * transform.localScale.x * 100));
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 1;
         indicationMarkers[1] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x - (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3(-(MultiplacationOffset * transform.localScale.x * 100), HeightOffset, -(MultiplacationOffset * transform.localScale.x * 100));
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 7;
         indicationMarkers[7] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z + (MultiplacationOffset * transform.localScale.x * 100)), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3((MultiplacationOffset * transform.localScale.x * 100), HeightOffset, (MultiplacationOffset * transform.localScale.x * 100));
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 3;
         indicationMarkers[3] = tempMarker;
 
-        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), Quaternion.identity) as GameObject;
+        tempMarker = Instantiate(indicationMarker, new Vector3(kom.transform.position.x + (MultiplacationOffset * transform.localScale.x * 100), kom.transform.position.y + HeightOffset, kom.transform.position.z - (MultiplacationOffset * transform.localScale.x * 100)), kom.transform.rotation) as GameObject;
         tempMarker.transform.localScale = Vector3.one * scaleModifier;
-        tempMarker.transform.parent = Tarmac.transform.GetChild(0).transform;
+        tempMarker.transform.parent = kom.transform;
+        //tempMarker.transform.localPosition = new Vector3((MultiplacationOffset * transform.localScale.x * 100), HeightOffset, -(MultiplacationOffset * transform.localScale.x * 100));
         tempMarker.GetComponent<Renderer>().material.color = Color.blue;
         tempMarker.GetComponent<IndicationMarker>().CircleCount = 5;
         indicationMarkers[5] = tempMarker;
         tempMarker = null;
+
+        for (int i = 0; i < indicationMarkers.Length; i++) {
+            indicationMarkers[0].transform.Rotate(kom.transform.right, 90);
+        }
+        
     }
     private void CheckProgress()
     {
@@ -382,7 +399,7 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < indicationMarkers.Length; i++)
             {
                 Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[i].transform.position) + " " + i);
-                if (Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[i].transform.position) < 15)
+                if (Vector3.Distance(MovementMarker.transform.GetChild(0).transform.position/* + MovementMarker.transform.GetChild(0).transform.localToWorldMatrix.MultiplyVector(transform.up)*/, indicationMarkers[i].transform.position) < 15)
                 {
                     indicationMarkers[i].GetComponent<Renderer>().material.color = Color.green;
                     currentCount = indicationMarkers[i].GetComponent<IndicationMarker>().CircleCount;
@@ -396,7 +413,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log(Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[currentCount + 1].transform.position)+" + "+ (currentCount+1));
 
-            if (Vector3.Distance(MovementMarker.transform.position + MovementMarker.transform.localToWorldMatrix.MultiplyVector(transform.up), indicationMarkers[currentCount + 1].transform.position) < 15)
+            if (Vector3.Distance(MovementMarker.transform.GetChild(0).transform.position/* + MovementMarker.transform.GetChild(0).transform.localToWorldMatrix.MultiplyVector(transform.up)*/, indicationMarkers[currentCount + 1].transform.position) < 15)
             {
                 indicationMarkers[currentCount + 1].GetComponent<Renderer>().material.color = Color.green;
                 currentCount = indicationMarkers[currentCount + 1].GetComponent<IndicationMarker>().CircleCount;
